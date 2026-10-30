@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سایت رسمی درسا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff4d6;--ink:#2b1b3d;--pink:#ff4f8b;--card:#ffffff;--mint:#3ddc97;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1330;--ink:#fff1c9;--card:#2c1d47;--pink:#ff6fa3}}
+:root[data-theme="dark"]{--bg:#1d1330;--ink:#fff1c9;--card:#2c1d47;--pink:#ff6fa3}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.9;text-align:center;overflow-x:hidden}
+main{max-width:640px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:clamp(5rem,28vw,9rem);font-weight:900;margin:10px 0 0;line-height:1.1;color:var(--pink);transform:rotate(-4deg);display:inline-block;text-shadow:4px 4px 0 var(--ink)}
+.sub{font-size:1.15rem;margin:6px 0 28px}
+section{background:var(--card);border:3px solid var(--ink);border-radius:22px;padding:20px 18px;margin:22px 0;box-shadow:6px 6px 0 var(--ink)}
+h2{margin:0 0 8px;font-size:1.3rem}
+button{font:inherit;font-weight:700;font-size:1.05rem;padding:10px 22px;border-radius:999px;border:3px solid var(--ink);background:var(--mint);color:#2b1b3d;cursor:pointer}
+button:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+#run{position:relative;transition:transform .15s}
+#arena{min-height:120px;display:flex;align-items:center;justify-content:center;position:relative}
+#out{min-height:3.6em;font-size:1.1rem;font-weight:700;margin-top:14px}
+.cert{border-style:dashed}
+.cert big{display:block;font-size:1.5rem;font-weight:900;color:var(--pink)}
+small{opacity:.75}
+</style>
+</head>
+<body>
+<main>
+  <h1>درسا</h1>
+  <p class="sub">سایت رسمی و کاملاً بی‌مصرف یکی از بهترین آدم‌های دنیا 🎉</p>
+
+  <section>
+    <h2>یه دکمه‌ی خیلی مهم</h2>
+    <small>فقط یک بار بزن، بیشتر نه!</small>
+    <div id="arena"><button id="run">نزن!</button></div>
+    <div id="count"></div>
+  </section>
+
+  <section>
+    <h2>دستگاه بهانه‌ساز درسا</h2>
+    <small>برای وقتایی که دیر رسیدی یا جواب پیام ندادی</small><br><br>
+    <button id="gen">بهانه بساز</button>
+    <div id="out" aria-live="polite">…</div>
+  </section>
+
+  <section class="cert">
+    <h2>گواهی‌نامه‌ی رسمی</h2>
+    بدین‌وسیله اعلام می‌گردد
+    <big>درسا</big>
+    برنده‌ی عنوان «بهترین درسای کل دنیا» شد.<br>
+    <small>تعداد شرکت‌کنندگان: ۱ نفر. هیئت داوران: من.</small>
+  </section>
+
+  <p><small>این سایت بدون بودجه، بدون برنامه و با کلی عشق ساخته شده. 💛</small></p>
+</main>
+<script>
+var run=document.getElementById('run'),cnt=document.getElementById('count'),n=0;
+var msgs=['نزن گفتم!','گفتم نزن 😠','چرا حرف گوش نمیدی؟','دستت رو بکش!','آخه چرا؟!','باشه تسلیم! بزن 😭'];
+function dodge(){
+  if(n>=6)return;
+  n++;
+  run.textContent=msgs[Math.min(n-1,msgs.length-1)];
+  var a=document.getElementById('arena').clientWidth/2-60;
+  run.style.transform='translate('+((Math.random()*2-1)*a)+'px,'+((Math.random()*2-1)*45)+'px) rotate('+((Math.random()*2-1)*12)+'deg)';
+  cnt.textContent='تلاش برای فرار: '+n.toLocaleString('fa-IR');
+}
+run.addEventListener('mouseenter',dodge);
+run.addEventListener('touchstart',function(e){if(n<6){e.preventDefault();dodge();}},{passive:false});
+run.addEventListener('click',function(){
+  if(n<6){dodge();return;}
+  run.style.transform='none';
+  run.textContent='🎊 دمت گرم! 🎊';
+  cnt.textContent='می‌دونستم آخرش می‌زنی 😂';
+});
+var ex=[
+ 'ترافیک بود (من تو خونه بودم، ولی ترافیک ذهنی).',
+ 'گوشیم رو سایلنت کرده بودم که بتونم بهتر پیام‌هاتو نخونم.',
+ 'ماه تو برج آب‌پاش بود.',
+ 'کفشم گفت امروز نمیاد.',
+ 'داشتم دنیا رو نجات می‌دادم، ولی دیر شد و دنیا خودش درست شد.',
+ 'فکر کردم فردا جمعه‌ست.',
+ 'شارژ مغزم صفر شد، سه ساعت وصل بودم به پریز.',
+ 'گربه‌ی یه نفر دیگه رو غذا می‌دادم. مهم بود.',
+ 'ساعتم گفت هنوز زوده. ازش بپرس!'
+];
+var last=-1,out=document.getElementById('out');
+document.getElementById('gen').addEventListener('click',function(){
+  var i;do{i=Math.floor(Math.random()*ex.length)}while(i===last);
+  last=i;out.textContent=ex[i];
+});
+</script>
+</body>
+</html>
